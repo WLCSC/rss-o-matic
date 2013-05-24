@@ -1,0 +1,95 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><%= @title %></title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+	<link rel="stylesheet" href="weather_style.css">
+</head>
+<body scroll="auto">
+	<div id="main" class="wrapper">
+		<table width="100%" border='1'>
+			<tr>
+				<td width="714"><img src="http://media2.wlfi.com/weather/radar001.jpg" height="400"/> </td>
+				<td>
+				
+				<table class="cur">
+					<tr><td>
+						<h2>Right Now</h2>
+					</td></tr>
+					<tr><td>
+						<img src="<%= @c_gif_path %>"/>
+					</td></tr>
+					<tr>
+						<td>
+							<%= @c_condition %>
+						</td>
+					</tr>	
+					<tr>
+						<td>
+							<%= @c_temp %><sup>o</sup>F
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<%= @c_humidity  %>% humidity
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<%= @c_w_speed %> mph <%= @c_w_dir %> wind
+						</td>
+					</tr>
+				</table>	
+				
+				</td>
+			</tr>
+		</table>
+		<div id="splash">
+			<img src="wl.png" height="64" /> Weather <img src="wl.png" height="64" />
+		</div>
+		<table border='1' width="100%">
+			<tr>
+				<% @forecast.each do |f| %>
+				<td>
+					<table class="forecast">
+						<tr>
+							<td>
+								<%= f[:day] %>
+							</td>
+						</tr>
+						<tr><td>
+							<img src="<%= f[:gif_path] %>"/>
+						</td></tr>
+						<tr>
+							<td>
+								<%= f[:condition] %>
+							</td>
+						</tr>	
+						<tr>
+							<td>
+								High: <%= f[:high] %><sup>o</sup>F
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Low: <%= f[:low] %><sup>o</sup>F
+							</td>
+						</tr>
+					</table>
+				</td>				
+				<% end %>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
