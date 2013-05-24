@@ -7,7 +7,7 @@ You will need Nokogiri installed (gem install nokogiri) for this to work.
 
 And here's how you run it:
     
-		ruby rssomatic.rb feed_url show_details? [count] [offset]
+		ruby rssomatic.rb feed_url output_file show_details? [count] [offset]
 
 Weather-o-Matic
 ---------------
@@ -16,7 +16,7 @@ An offshoot of RSS-o-Matic that spits the weather forecast out into web pages su
 
 Run it like this:
  
-    ruby weatheromatic zip_code
+    ruby weatheromatic zip_code output_file
 
 Copyright 2013 Brad Thompson Distributed under the terms of the GNU General Public License
 
