@@ -24,7 +24,7 @@
 												<img id="compass_needle" style="position: absolute; top: 0px; left: 0px; z-index: 2;" src="compass-needle.png" />
 											</div>
 											<p>
-												<%= @wind_text %>
+												70&deg; (from ENE)
 											</p>
 										</div>
 									</td>
@@ -33,12 +33,12 @@
 											<img src="wl.png" height="128px;" />
 										</div>
 										<p style="text-align: center;">
-											<%= @station_code %>
+											KLAF
 										</p>
 									</td>
 									<td>
 										<p>
-											<%= @temperature_string %>
+											21.0 &deg;C (69.8 &deg;F) (294.15 &deg;K)
 										</p>
 									</td>
 								</tr>
@@ -49,18 +49,84 @@
 			</span>
 			<span style="width: 49%; float: right;">
 				<table>
-					<% @forecast.each do |day| %>
+					
 					<tr>
 						<td>
-							<%= day[:dayname] %>:&nbsp;
-							<% day[:weather_items].each do |item| %>
-							<%= item %>;&nbsp;
-							<% end %>
-							High:&nbsp;<%= day[:high] %>
-							Low:&nbsp;<%= day[:low] %>
+							Wednesday:&nbsp;
+							
+							Clear;&nbsp;
+							
+							High:&nbsp;26
+							Low:&nbsp;19
 						</td>
 					</tr>
-					<% end %>
+					
+					<tr>
+						<td>
+							Thursday:&nbsp;
+							
+							Clear;&nbsp;
+							
+							High:&nbsp;29
+							Low:&nbsp;20
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							Friday:&nbsp;
+							
+							Clouds;&nbsp;
+							
+							High:&nbsp;31
+							Low:&nbsp;22
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							Saturday:&nbsp;
+							
+							Clouds;&nbsp;
+							
+							High:&nbsp;31
+							Low:&nbsp;25
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							Sunday:&nbsp;
+							
+							Rain;&nbsp;
+							
+							High:&nbsp;27
+							Low:&nbsp;20
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							Monday:&nbsp;
+							
+							Rain;&nbsp;
+							
+							High:&nbsp;29
+							Low:&nbsp;24
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							Tuesday:&nbsp;
+							
+							Rain;&nbsp;
+							
+							High:&nbsp;30
+							Low:&nbsp;23
+						</td>
+					</tr>
+					
 				</table>
 			</span>
 			<div style="display: inline-block;">

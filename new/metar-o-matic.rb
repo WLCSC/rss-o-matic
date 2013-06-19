@@ -24,8 +24,10 @@ end
 
 KELVIN_TO_CELSIUS = -273.15
 
+@station_code = "KLAF"
+
 # get the KLAF station's report
-noaain = Metar::Raw::Noaa.new('KLAF')
+noaain = Metar::Raw::Noaa.new(@station_code)
 metp = Metar::Parser.new(noaain)
 
 puts noaain.to_s
@@ -33,13 +35,22 @@ puts noaain.to_s
 print "Temperature is "
 metp.temperature.to_s.match(/^(\d+)°(C|F)$/) {|m|
 	if $2 == "C"
-		puts $1 + " °C (" + (($1.to_f * 9/5) + 32).to_s + " °F)"
+		celsius = $1.to_f
+		fahrenheit = (($1.to_f * 9/5) + 32)
+		kelvin = (celsius + -KELVIN_TO_CELSIUS)
+		puts celsius.to_s + " °C (" + fahrenheit.to_s + " °F) (" + kelvin.to_s + " °K)"
+		@temperature_string = (celsius.to_s + " °C (" + fahrenheit.to_s + " °F) (" + kelvin.to_s + " °K)").gsub("°", "&deg;")
 	elsif $2 == "F"
-		puts (($1.to_f - 32) * 5/9).to_s + " °C (" + $1 + " °F)"
+		celsius = (($1.to_f - 32) * 5/9)
+		fahrenheit = $1.to_f
+		kelvin = (celsius + -KELVIN_TO_CELSIUS) 
+		puts celsius.to_s + " °C (" + fahrenheit.to_s + " °F) (" + kelvin.to_s + " °K)"
+		@temperature_string = (celsius.to_s + " °C (" + fahrenheit.to_s + " °F) (" + kelvin.to_s + " °K)").gsub("°", "&deg;")
 	else
 		puts " not being happy [not matching teh regex's for some reason] :("
 	end
 }
+
 
 puts "Sky Conditions are:"
 if metp.sky_conditions.first != "clear skies"
@@ -56,22 +67,49 @@ else
 	puts "Winds from " + metp.wind.direction.to_s + " at " + metp.wind.speed.to_kilometers_per_hour.floor.to_s + " km/h (" + metp.wind.speed.to_miles_per_hour.floor.to_s + " mph)" + (metp.wind.gusts ? " gusting to " + metp.wind.gusts.to_kilometers_per_hour.floor.to_s + " km/h (" + metp.wind.gusts.to_miles_per_hour.floor.to_s + " mph)" : "")
 end
 
+puts "Wind direction: " + metp.wind.direction.to_s(:abbreviated => true)
+
+puts metp.wind.direction.to_s(:abbreviated => true)
+@wind_text = metp.wind.direction.to_s(:abbreviated => true).gsub("°","&deg;") + " (from " + metp.wind.direction.to_compass + ")" 
+@wind_direction = metp.wind.direction.to_s(:abbreviated => true).gsub("°","deg")
+
 puts "Altimeter " + metp.sea_level_pressure.to_inches_of_mercury.to_s
-
-
 
 # FORECAST
 raw_data = open("http://api.openweathermap.org/data/2.5/forecast/daily?q=West,Lafayette&mode=json").read
 forecast_json_data = JSON.parse(raw_data)
 
-puts forecast_json_data
+@forecast = []
 
-puts forecast_json_data["cod"]
-puts forecast_json_data["city"]["name"]
 forecast_json_data["list"].each do |day|
-	print DateTime.strptime(day["dt"].to_s,'%s').dayname + ": "
+	d = {}
+	d[:dayname] = DateTime.strptime(day["dt"].to_s,'%s').dayname
+
+	day_weather_items = []
 	day["weather"].each do |weather_item|
-		print weather_item["main"] + "; "
+		day_weather_items << weather_item["main"]
 	end
-	puts "high " + (day["temp"]["max"] + KELVIN_TO_CELSIUS).floor.to_s + "; low " + (day["temp"]["min"] + KELVIN_TO_CELSIUS).floor.to_s
+	d[:weather_items] = day_weather_items
+
+	d[:high] = (day["temp"]["max"] + KELVIN_TO_CELSIUS).floor.to_s
+	d[:low] = (day["temp"]["min"] + KELVIN_TO_CELSIUS).floor.to_s
+	@forecast << d
+end
+
+# start writing the HTML file
+
+begin
+	@template = ''
+	File.open('./metar-o-matic.html.erb','r') do |f|
+		@template = f.read
+	end
+
+	template = ERB.new @template
+	File.open('./public/metar-o-matic.html','w') do |f|
+		f << template.result(binding)
+	end
+rescue
+	File.open('./error.log','a') do |f|
+		f << $!
+	end
 end
