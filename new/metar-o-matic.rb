@@ -32,39 +32,33 @@ metp = Metar::Parser.new(noaain)
 
 puts noaain.to_s
 
-print "Temperature is "
 metp.temperature.to_s.match(/^(\d+)°(C|F)$/) {|m|
 	if $2 == "C"
 		celsius = $1.to_f
 		fahrenheit = (($1.to_f * 9/5) + 32)
 		kelvin = (celsius + -KELVIN_TO_CELSIUS)
-		puts celsius.to_s + " °C (" + fahrenheit.to_s + " °F) (" + kelvin.to_s + " °K)"
 		@temperature_string = (celsius.to_s + " °C (" + fahrenheit.to_s + " °F) (" + kelvin.to_s + " °K)").gsub("°", "&deg;")
 	elsif $2 == "F"
 		celsius = (($1.to_f - 32) * 5/9)
 		fahrenheit = $1.to_f
 		kelvin = (celsius + -KELVIN_TO_CELSIUS) 
-		puts celsius.to_s + " °C (" + fahrenheit.to_s + " °F) (" + kelvin.to_s + " °K)"
 		@temperature_string = (celsius.to_s + " °C (" + fahrenheit.to_s + " °F) (" + kelvin.to_s + " °K)").gsub("°", "&deg;")
 	else
-		puts " not being happy [not matching teh regex's for some reason] :("
+		puts "Temperature FAIL"
 	end
 }
 
 @scstring = ""
 
-puts "Sky Conditions are:"
 if metp.sky_conditions.first != "clear skies"
 	metp.sky_conditions.each do |sc|
-		puts sc.to_summary + (sc.type ? " of type " + sc.type : "") + (sc.height ? " at " + sc.height.to_s : "")
 		@scstring += sc.to_summary + "; "
 	end
 else
-	puts metp.sky_conditions
 	@scsctring += metp.sky_conditions
 end
 
-puts @scstring
+puts "SC " + @scstring
 
 if metp.wind.direction.value == 0 && metp.wind.speed.to_kilometers_per_hour == 0 && !metp.wind.gusts
 	puts "Winds are reporting calm"
