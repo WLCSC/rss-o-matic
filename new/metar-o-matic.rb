@@ -51,15 +51,20 @@ metp.temperature.to_s.match(/^(\d+)°(C|F)$/) {|m|
 	end
 }
 
+@scstring = ""
 
 puts "Sky Conditions are:"
 if metp.sky_conditions.first != "clear skies"
 	metp.sky_conditions.each do |sc|
 		puts sc.to_summary + (sc.type ? " of type " + sc.type : "") + (sc.height ? " at " + sc.height.to_s : "")
+		@scstring += sc.to_summary + "; "
 	end
 else
 	puts metp.sky_conditions
+	@scsctring += metp.sky_conditions
 end
+
+puts @scstring
 
 if metp.wind.direction.value == 0 && metp.wind.speed.to_kilometers_per_hour == 0 && !metp.wind.gusts
 	puts "Winds are reporting calm"
@@ -100,12 +105,12 @@ end
 
 begin
 	@template = ''
-	File.open('./metar-o-matic.html.erb','r') do |f|
+	File.open('./metar-o-matic-bootstrappy.html.erb','r') do |f|
 		@template = f.read
 	end
 
 	template = ERB.new @template
-	File.open('./public/metar-o-matic.html','w') do |f|
+	File.open('./public/metar-o-matic-bootstrappy.html','w') do |f|
 		f << template.result(binding)
 	end
 rescue

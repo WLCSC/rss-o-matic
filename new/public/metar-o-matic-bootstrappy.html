@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Weather-o-Matic</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<!-- Le styles -->
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href="css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="css/metar-o-matic.css" rel="stylesheet">
+
+		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+			<script src="js/html5shiv.js"></script>
+			<![endif]-->
+
+		<!-- Fav and touch icons -->
+        <link rel="shortcut icon" href="ico/favicon.png">
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="span6">
+					<table>
+						<tr>
+							<td colspan="3">
+								<img width="100%" src="http://radblast-aws.wunderground.com/cgi-bin/radar/WUNIDS_map?station=IND" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<table style="width: 100%;">
+									<tr>
+										<td width="(100/3)%">
+											<div>
+												<div style="position: relative;">
+													<img id="compass_back" style="z-index: 1;" src="compass-back.png" />
+													<img id="compass_needle" style="position: absolute; top: 0px; left: 0px; z-index: 2;" src="compass-needle.png" />
+												</div>
+												<p>
+													60&deg; (from ENE)
+												</p>
+											</div>
+										</td>
+										<td width="(100/3)%">
+											<img src="wl.png" style="height: 128px;" />
+											<p style="text-align: center">
+												KLAF
+											</p>
+										</td>
+										<td width="(100/3)%">
+											<div>
+												
+												<img style="height: 128px;" src="weather-icons/mostly-sunny-icon.png">
+												
+											</div>
+											<p>
+												24.0 &deg;C<br />(75.2 &deg;F)<br />(297.15 &deg;K)
+											</p>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="span6">
+					<table height="100%" width="100%">
+						
+						<tr width="100%" height="(100/7)%">
+							<td>
+								<div class="well" style="width: 100%;">
+									Wed&nbsp;
+									
+									Clear;&nbsp;
+									
+									High:&nbsp;28
+									Low:&nbsp;28
+								</div>
+							</td>
+						</tr>
+						
+						<tr width="100%" height="(100/7)%">
+							<td>
+								<div class="well" style="width: 100%;">
+									Thu&nbsp;
+									
+									Clear;&nbsp;
+									
+									High:&nbsp;30
+									Low:&nbsp;30
+								</div>
+							</td>
+						</tr>
+						
+						<tr width="100%" height="(100/7)%">
+							<td>
+								<div class="well" style="width: 100%;">
+									Fri&nbsp;
+									
+									Clouds;&nbsp;
+									
+									High:&nbsp;31
+									Low:&nbsp;31
+								</div>
+							</td>
+						</tr>
+						
+						<tr width="100%" height="(100/7)%">
+							<td>
+								<div class="well" style="width: 100%;">
+									Sat&nbsp;
+									
+									Clouds;&nbsp;
+									
+									High:&nbsp;31
+									Low:&nbsp;31
+								</div>
+							</td>
+						</tr>
+						
+						<tr width="100%" height="(100/7)%">
+							<td>
+								<div class="well" style="width: 100%;">
+									Sun&nbsp;
+									
+									Rain;&nbsp;
+									
+									High:&nbsp;27
+									Low:&nbsp;27
+								</div>
+							</td>
+						</tr>
+						
+						<tr width="100%" height="(100/7)%">
+							<td>
+								<div class="well" style="width: 100%;">
+									Mon&nbsp;
+									
+									Rain;&nbsp;
+									
+									High:&nbsp;29
+									Low:&nbsp;29
+								</div>
+							</td>
+						</tr>
+						
+						<tr width="100%" height="(100/7)%">
+							<td>
+								<div class="well" style="width: 100%;">
+									Tue&nbsp;
+									
+									Rain;&nbsp;
+									
+									High:&nbsp;30
+									Low:&nbsp;30
+								</div>
+							</td>
+						</tr>
+						
+					</table>
+				</div>
+			</div>
+		</div> <!-- /container -->
+
+		<!-- Le javascript
+			 ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="js/bootstrap.js"></script>
+	</body>
+</html>

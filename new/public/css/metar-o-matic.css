@@ -1,0 +1,10 @@
+body {
+	background-image: url("img/tweed.png");
+	background-repeat: repeat;
+	background-color: #404040;
+	color: #ECECEC;
+}
+
+.well {
+	color: #404040;
+}
