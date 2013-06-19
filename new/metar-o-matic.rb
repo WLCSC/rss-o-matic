@@ -99,12 +99,12 @@ end
 
 begin
 	@template = ''
-	File.open('./metar-o-matic-bootstrappy.html.erb','r') do |f|
+	File.open('./metar-o-matic.html.erb','r') do |f|
 		@template = f.read
 	end
 
 	template = ERB.new @template
-	File.open('./public/metar-o-matic-bootstrappy.html','w') do |f|
+	File.open('./public/metar-o-matic.html','w') do |f|
 		f << template.result(binding)
 	end
 rescue

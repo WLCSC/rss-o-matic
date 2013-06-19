@@ -1,70 +1,51 @@
 <!DOCTYPE html>
-<!-- see github.com/WLCSC/rss-o-matic for example -->
 <html lang="en">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta charset="utf-8">
+		<title>Weather-o-Matic</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<!-- Le styles -->
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href="css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="css/metar-o-matic.css" rel="stylesheet">
+
+		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+			<script src="js/html5shiv.js"></script>
+			<![endif]-->
+
+		<!-- Fav and touch icons -->
+        <link rel="shortcut icon" href="ico/favicon.png">
 	</head>
+
 	<body>
-		<div>
-			<span style="width: 49%; float: left;">
-				<table>
-					<tr>
-						<td>
-							<img width="512px;" src="http://radblast-aws.wunderground.com/cgi-bin/radar/WUNIDS_map?station=IND" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<table width="100%">
-								<tr>
-									<td>
-										<div>
-											<div style="position: relative;">
-												<img id="compass_back" style="z-index: 1;" src="compass-back.png" />
-												<img id="compass_needle" style="position: absolute; top: 0px; left: 0px; z-index: 2;" src="compass-needle.png" />
-											</div>
-											<p>
-												<%= @wind_text %>
-											</p>
-										</div>
-									</td>
-									<td>
-										<div>
-											<img src="wl.png" height="128px;" />
-										</div>
-										<p style="text-align: center;">
-											<%= @station_code %>
-										</p>
-									</td>
-									<td>
-										<p>
-											<%= @temperature_string %>
-										</p>
-									</td>
-								</tr>
-						</table>
-						</td>
-					</tr>
-				</table>
-			</span>
-			<span style="width: 49%; float: right;">
-				<table>
-					<% @forecast.each do |day| %>
-					<tr>
-						<td>
-							<%= day[:dayname] %>:&nbsp;
-							<% day[:weather_items].each do |item| %>
-							<%= item %>;&nbsp;
-							<% end %>
-							High:&nbsp;<%= day[:high] %>
-							Low:&nbsp;<%= day[:low] %>
-						</td>
-					</tr>
-					<% end %>
-				</table>
-			</span>
-			<div style="display: inline-block;">
+		<div class="radar">
+			<img src="http://radblast-aws.wunderground.com/cgi-bin/radar/WUNIDS_map?station=IND">
 		</div>
+		<div class="compass-logocredits-status-container">
+			<div class="compass-container">
+			</div>
+			<div class="logo-and-credits-container">
+			</div>
+			<div class="current-status-container">
+			</div>
+		</div>
+		<div class="forecast-container">
+			<% for i in 0..@forecast.count %>
+			   <% cur_item = @forecast[i] %>
+			   <% top_padding = %>
+				<div class="forecast-item-<%= i %>"
+				     style="top: <%= top_padding %>">
+				   <%= cur_item[:dayname] %>
+			   </div>
+			<% end %>
+		</div>
+		<!-- Le javascript
+			 ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="js/bootstrap.js"></script>
 	</body>
 </html>
