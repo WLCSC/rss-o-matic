@@ -26,6 +26,12 @@ KELVIN_TO_CELSIUS = -273.15
 
 @station_code = "KLAF"
 
+def to_fahrenheit (celsius)
+	celsius = celsius.to_f
+	
+	return ((celsius * 9/5) + 32)
+end
+
 # get the KLAF station's report
 noaain = Metar::Raw::Noaa.new(@station_code)
 metp = Metar::Parser.new(noaain)
@@ -89,8 +95,8 @@ forecast_json_data["list"].each do |day|
 	end
 	d[:weather_items] = day_weather_items
 
-	d[:high] = (day["temp"]["max"] + KELVIN_TO_CELSIUS).floor.to_s
-	d[:low] = (day["temp"]["min"] + KELVIN_TO_CELSIUS).floor.to_s
+	d[:high] = to_fahrenheit(day["temp"]["max"] + KELVIN_TO_CELSIUS).floor.to_s
+	d[:low] = to_fahrenheit(day["temp"]["min"] + KELVIN_TO_CELSIUS).floor.to_s
 	@forecast << d
 end
 

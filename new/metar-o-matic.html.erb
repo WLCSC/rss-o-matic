@@ -41,7 +41,7 @@
 			<div class="forecast-item" style="position: absolute; top: <%= each_height + differential %>px; left: 0px; height: <%= each_height %>px; width: <%= 1024-(650+16) %>px;">
 				<table style="margin-left: 16px; margin-right: 16px; height: <%= each_height%>px; width: <%= 1024-(650+48) %>px;">
 					<tr>
-						<td>
+						<td style="width: 96px;">
 							<h1><%= cur_item[:dayname][0..2] %></h1>
 						</td>
 						<td>
@@ -64,6 +64,9 @@
 							<img style="height: <%= each_height - 8 %>px;" src="weather-icons/sunny-icon.png">
 							<% end %>
 							<% end %>
+						</td>
+						<td>
+							<h2><%= cur_item[:high] %>/<%= cur_item[:low] %></h2>
 						</td>
 					</tr>
 				</table>
