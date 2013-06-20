@@ -33,14 +33,41 @@
 			<div class="current-status-container">
 			</div>
 		</div>
-		<div class="forecast-container">
-			<% for i in 0..@forecast.count %>
-			   <% cur_item = @forecast[i] %>
-			   <% top_padding = %>
-				<div class="forecast-item-<%= i %>"
-				     style="top: <%= top_padding %>">
-				   <%= cur_item[:dayname] %>
-			   </div>
+		<div class="forecast-container" style="position: absolute; height: <%= 768-32 %>px; width: <%= 1024-682 %>px; top: 16px; left:650px;">
+			<% for i in 0..(@forecast.count - 1) %>
+			<% cur_item = @forecast[i] %>
+			<% each_height = ((768 - 32) / @forecast.count) - 8 %>
+			<% differential = (i-1) * ((768 - 24) / @forecast.count)+10 %>
+			<div class="forecast-item" style="position: absolute; top: <%= each_height + differential %>px; left: 0px; height: <%= each_height %>px; width: <%= 1024-(650+16) %>px;">
+				<table style="margin-left: 16px; margin-right: 16px; height: <%= each_height%>px; width: <%= 1024-(650+48) %>px;">
+					<tr>
+						<td>
+							<h1><%= cur_item[:dayname][0..2] %></h1>
+						</td>
+						<td>
+							<% cur_item[:weather_items].each do |wi| %>
+							<% case 
+							   when wi.match( /(broken|few)/i) %>
+							<img style="height: <%= each_height - 8 %>px;" src="weather-icons/mostly-sunny-icon.png">
+							<% when wi.match(/(clear|sun)/i) %>
+							<img style="height: <%= each_height - 8 %>px;" src="weather-icons/sunny-icon.png">
+							<% when wi.match(/(rain|shower)/i) %>
+							<img style="height: <%= each_height - 8 %>px;" src="weather-icons/shower-icon.png">
+							<% when wi.match(/snow/i) %>
+							<img style="height: <%= each_height - 8 %>px;" src="weather-icons/snowing-icon.png">
+							<% when wi.match(/cloud/i) %>
+							<img style="height: <%= each_height - 8 %>px;" src="weather-icons/cloudy-icon.png">
+							<% when wi.match(/thunder/i) %>
+							<img style="height: <%= each_height - 8 %>px;" src="weather-icons/thunder-storm-icon.png">
+							<% else %>
+							<% puts wi + " did not match anything, it's sunny :D" %>
+							<img style="height: <%= each_height - 8 %>px;" src="weather-icons/sunny-icon.png">
+							<% end %>
+							<% end %>
+						</td>
+					</tr>
+				</table>
+			</div>
 			<% end %>
 		</div>
 		<!-- Le javascript

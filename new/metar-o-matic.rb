@@ -60,7 +60,7 @@ end
 
 puts "SC " + @scstring
 
-if metp.wind.direction.value == 0 && metp.wind.speed.to_kilometers_per_hour == 0 && !metp.wind.gusts
+if (metp.wind.direction.value == 0 && !metp.variable_wind) && metp.wind.speed.to_kilometers_per_hour == 0 && !metp.wind.gusts
 	puts "Winds are reporting calm"
 else
 	puts "Winds from " + metp.wind.direction.to_s + " at " + metp.wind.speed.to_kilometers_per_hour.floor.to_s + " km/h (" + metp.wind.speed.to_miles_per_hour.floor.to_s + " mph)" + (metp.wind.gusts ? " gusting to " + metp.wind.gusts.to_kilometers_per_hour.floor.to_s + " km/h (" + metp.wind.gusts.to_miles_per_hour.floor.to_s + " mph)" : "")
@@ -79,7 +79,6 @@ raw_data = open("http://api.openweathermap.org/data/2.5/forecast/daily?q=West,La
 forecast_json_data = JSON.parse(raw_data)
 
 @forecast = []
-
 forecast_json_data["list"].each do |day|
 	d = {}
 	d[:dayname] = DateTime.strptime(day["dt"].to_s,'%s').dayname
@@ -99,16 +98,23 @@ end
 
 begin
 	@template = ''
-	File.open('./metar-o-matic.html.erb','r') do |f|
+	puts "Reading template"
+	File.open('./metar-o-matic.html.erb', 'r') do |f|
 		@template = f.read
 	end
 
+	puts "Making the template now"
 	template = ERB.new @template
-	File.open('./public/metar-o-matic.html','w') do |f|
+
+	puts "Writing the file"
+	File.open('./public/metar-o-matic.html', 'w') do |f|
 		f << template.result(binding)
 	end
-rescue
+rescue => variable
 	File.open('./error.log','a') do |f|
 		f << $!
+		puts "An error occured: \"" + $!.to_s + "\"!"
+		print variable.backtrace.join("\n")
+		puts
 	end
 end
