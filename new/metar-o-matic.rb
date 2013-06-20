@@ -95,8 +95,8 @@ forecast_json_data["list"].each do |day|
 	end
 	d[:weather_items] = day_weather_items
 
-	d[:high] = to_fahrenheit(day["temp"]["max"] + KELVIN_TO_CELSIUS).floor.to_s
-	d[:low] = to_fahrenheit(day["temp"]["min"] + KELVIN_TO_CELSIUS).floor.to_s
+	d[:high] = (day["temp"]["max"] + KELVIN_TO_CELSIUS).floor.to_s
+	d[:low] = (day["temp"]["min"] + KELVIN_TO_CELSIUS).floor.to_s
 	@forecast << d
 end
 
