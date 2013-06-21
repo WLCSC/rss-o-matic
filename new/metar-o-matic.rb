@@ -24,7 +24,7 @@ end
 
 KELVIN_TO_CELSIUS = -273.15
 
-@station_code = "KIND"
+@station_code = "KLAF"
 
 def to_fahrenheit (celsius)
 	celsius = celsius.to_f
