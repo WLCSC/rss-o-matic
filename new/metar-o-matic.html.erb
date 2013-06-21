@@ -30,7 +30,10 @@
 				<table class="compass-container-table">
 					<tr>
 						<td>
-							<img id="compass-back" src="compass-back.png" style="width: 128px;">
+							<div id="compass">
+								<img id="compass-back" src="compass-back.png" style="">
+								<img id="compass-needle" src="compass-needle.png" style="">
+							</div>
 						</td>
 					</tr>
 					<tr>
@@ -41,6 +44,26 @@
 				</table>
 			</div>
 			<div class="logo-and-credits-container">
+				<table class="lac-table">
+					<tr>
+						<td>
+							<img src="wl.png" style="width: 128px">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							[<%= @station_code %>]
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<tiny>
+								Designed by Kristofer Rye (c.o. 2016)<br />
+								
+							</tiny>
+						</td>
+					</tr>
+				</table>
 			</div>
 			<div class="current-status-container">
 			</div>

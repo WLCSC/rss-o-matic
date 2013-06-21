@@ -2,12 +2,12 @@
 body {
 	background-image: url("img/tweed.png");
 	background-repeat: repeat;
-	background-color: #404040;
+	background-color: #960018;
 	color: #ECECEC;
 }
 
 .well {
-	color: #404040;
+	color: #202020;
 }
 
 .radar {
@@ -24,7 +24,7 @@ body {
 	left: 16px;
 	width: 201px;
 	height: 256px;
-	background-color: #0F0F0F;
+	background-color: #202020;
 }
 
 .compass-container-table {
@@ -42,7 +42,16 @@ body {
 	left: 225px;
 	width: 200px;
 	height: 256px;
-	background-color: #FFF000;
+	background-color: #202020;
+}
+
+.lac-table {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 201px;
+	height: 256px;
+	text-align: center;
 }
 
 .current-status-container {
@@ -51,10 +60,30 @@ body {
 	left: 433px;
 	width: 200px;
 	height: 256px;
-	background-color: #0FFF00;
+	background-color: #202020;
 }
 
 .forecast-item {
 	position: absolute;
-	background-color: #0F0F0F;
+	background-color: #202020;
+}
+
+#compass {
+}
+
+#compass-back {
+	width: 128px;
+}
+
+/* ROTATEME */
+#compass-needle {
+	position: absolute;
+	top: 16px;
+	left: 37px;
+	width: 128px;
+	transform: rotate(90deg);
+}
+
+tiny {
+	font-size: 8px;
 }

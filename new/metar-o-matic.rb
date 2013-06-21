@@ -113,7 +113,7 @@ begin
 	template = ERB.new @template
 
 	puts "Writing the file"
-	File.open('./public/metar-o-matic.html', 'w') do |f|
+	File.open('./public/index.html', 'w') do |f|
 		f << template.result(binding)
 	end
 rescue => variable
