@@ -1,3 +1,4 @@
+
 body {
 	background-image: url("img/tweed.png");
 	background-repeat: repeat;
@@ -18,12 +19,21 @@ body {
 }
 
 .compass-container {
-	position: relative;
+	position: absolute;
 	top: 496px;
 	left: 16px;
 	width: 201px;
 	height: 256px;
-	background-color: #FF0000;
+	background-color: #0F0F0F;
+}
+
+.compass-container-table {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 201px;
+	height: 256px;
+	text-align: center;
 }
 
 .logo-and-credits-container {
