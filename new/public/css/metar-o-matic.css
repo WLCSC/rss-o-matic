@@ -4,6 +4,8 @@ body {
 	background-repeat: repeat;
 	background-color: #960018;
 	color: #ECECEC;
+
+	line-height: 16px;
 }
 
 .well {
@@ -27,6 +29,11 @@ body {
 	background-color: #202020;
 }
 
+.compass-inner {
+	padding: 16px 16px 16px 16px;
+	text-align: center;
+}
+
 .compass-container-table {
 	position: absolute;
 	top: 0px;
@@ -43,6 +50,7 @@ body {
 	width: 200px;
 	height: 256px;
 	background-color: #202020;
+	text-align: center;
 }
 
 .lac-table {
@@ -63,20 +71,22 @@ body {
 	background-color: #202020;
 }
 
+.current-inner {
+	padding: 16px 16px 16px 16px;
+	text-align: center;
+}
+
 .forecast-item {
 	position: absolute;
 	background-color: #202020;
 }
 
-#compass {
-}
-
-#compass-back {
+.compass-back {
 	width: 128px;
 }
 
 /* ROTATEME */
-#compass-needle {
+.compass-needle {
 	position: absolute;
 	top: 16px;
 	left: 37px;
@@ -84,6 +94,44 @@ body {
 	transform: rotate(90deg);
 }
 
+.station-code {
+	font-size: 18px;
+	font-family: monospace;
+}
+
 tiny {
-	font-size: 8px;
+	font-size: 6px;
+	line-height: 8px;
+	font-family: monospace;
+}
+
+.logo-and-credits-inner {
+	padding: 16px 16px 16px 16px;
+}
+
+.compass-text {
+	font-size: 18px;
+	font-family: monospace;
+}
+
+.current-temperature {
+	font-size: 28px;
+	margin-top: -8px;
+	margin-bottom: 12px;
+}
+
+.wind-text {
+	font-size: 16px;
+	font-weight: bold;
+	font-family: monospace;
+	color: #808080;
+	letter-spacing: 24px;
+	padding-top: 16px;
+	padding-left: 24px;
+}
+
+#date-time {
+	font-size: 16px;
+	line-height: 18px;
+	font-family: monospace;
 }

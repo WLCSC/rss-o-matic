@@ -24,7 +24,7 @@ end
 
 KELVIN_TO_CELSIUS = -273.15
 
-@station_code = "KLAF"
+@station_code = "KIND"
 
 def to_fahrenheit (celsius)
 	celsius = celsius.to_f
@@ -43,11 +43,13 @@ metp.temperature.to_s.match(/^(\d+)°(C|F)$/) {|m|
 		celsius = $1.to_f
 		fahrenheit = (($1.to_f * 9/5) + 32)
 		kelvin = (celsius + -KELVIN_TO_CELSIUS)
+		@temperature_short = celsius.to_s
 		@temperature_string = (celsius.to_s + " °C (" + fahrenheit.to_s + " °F) (" + kelvin.to_s + " °K)").gsub("°", "&deg;")
 	elsif $2 == "F"
 		celsius = (($1.to_f - 32) * 5/9)
 		fahrenheit = $1.to_f
-		kelvin = (celsius + -KELVIN_TO_CELSIUS) 
+		kelvin = (celsius + -KELVIN_TO_CELSIUS)
+		@temperature_short = celsius.to_s
 		@temperature_string = (celsius.to_s + " °C (" + fahrenheit.to_s + " °F) (" + kelvin.to_s + " °K)").gsub("°", "&deg;")
 	else
 		puts "Temperature FAIL"

@@ -27,45 +27,66 @@
 		</div>
 		<div class="compass-logocredits-status-container">
 			<div class="compass-container">
-				<table class="compass-container-table">
-					<tr>
-						<td>
-							<div id="compass">
-								<img id="compass-back" src="compass-back.png" style="">
-								<img id="compass-needle" src="compass-needle.png" style="">
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<h3><%= @wind_text %></h3>
-						</td>
-					</tr>
-				</table>
+				<div class="compass-inner">
+					<div class="compass">
+						<img class="compass-back" src="compass-back.png" style="">
+						<img class="compass-needle" src="compass-needle.png" style="">
+					</div>
+					<hr />
+					<div class="compass-text">
+						<%= @wind_text %>
+					</div>
+					<div class="wind-text">
+						<%= "WIND" %>
+					</div>
+				</div>
 			</div>
 			<div class="logo-and-credits-container">
-				<table class="lac-table">
-					<tr>
-						<td>
-							<img src="wl.png" style="width: 128px">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							[<%= @station_code %>]
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<tiny>
-								Designed by Kristofer Rye (c.o. 2016)<br />
-								
-							</tiny>
-						</td>
-					</tr>
-				</table>
+				<div class="logo-and-credits-inner">
+					<div class="logo">
+						<img src="wl.png" style="height: 128px;">
+					</div>
+					<hr />
+					<div class="station-code" style="margin-top: -8px;">
+						[<%= @station_code %>]
+					</div>
+					<div class="credits">
+						<tiny>
+							Designed by Kristofer Rye (c.o. 2016)<br />
+							RADAR from <a href="http://www.wunderground.com">Weather Underground</a><br />
+							Forecast from <a href="http://api.openweathermap.org">OpenWeatherMap</a>
+						</tiny>
+					</div>
+				</div>
 			</div>
 			<div class="current-status-container">
+				<div class="current-inner">
+					<div class="weather-icon">
+						<% wi = @scstring.split("; ").first %>
+						<% case 
+						   when wi.match( /(broken|few)/i) %>
+						<img style="height: 128px;" src="weather-icons/mostly-sunny-icon.png">
+						<% when wi.match(/(clear|sun)/i) %>
+						<img style="height: 128px;" src="weather-icons/sunny-icon.png">
+						<% when wi.match(/(rain|shower)/i) %>
+						<img style="height: 128px;" src="weather-icons/shower-icon.png">
+						<% when wi.match(/snow/i) %>
+						<img style="height: 128px;" src="weather-icons/snowing-icon.png">
+						<% when wi.match(/cloud/i) %>
+						<img style="height: 128px;" src="weather-icons/cloudy-icon.png">
+						<% when wi.match(/thunder/i) %>
+						<img style="height: 128px;" src="weather-icons/thunder-storm-icon.png">
+						<% else %>
+						<% puts wi + " did not match anything, it's sunny :D" %>
+						<img style="height: 128px;" src="weather-icons/sunny-icon.png">
+						<% end %>
+					</div>
+					<hr />
+					<div class="current-temperature">
+						<%= @temperature_short + " &deg;C " %>
+					</div>
+					<div id="date-time"></div>
+				</div>
 			</div>
 		</div>
 		<div class="forecast-container" style="position: absolute; height: <%= 768-32 %>px; width: <%= 1024-682 %>px; top: 16px; left:650px;">
@@ -113,5 +134,7 @@
 			 ================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="js/bootstrap.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/metar-o-matic.js"></script>
 	</body>
 </html>
