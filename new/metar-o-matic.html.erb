@@ -30,7 +30,18 @@
 				<div class="compass-inner">
 					<div class="compass">
 						<img class="compass-back" src="compass-back.png" style="">
-						<img class="compass-needle" src="compass-needle.png" style="">
+						<img class="compass-needle" src="compass-needle.png" style="/* Safari */
+						
+                                                -webkit-transform: rotate(<%= @wind_text.split('&')[0]; %>deg);
+                                                
+                                                /* Firefox */
+                                                -moz-transform: rotate(<%= @wind_text.split('&')[0]; %>-90deg);
+                                                
+                                                /* IE */
+                                                -ms-transform: rotate(<%= @wind_text.split('&')[0]; %>deg);
+                                                
+                                                /* Opera */
+                                                -o-transform: rotate(<%= @wind_text.split('&')[0]; %>deg);">
 					</div>
 					<hr />
 					<div class="compass-text">
