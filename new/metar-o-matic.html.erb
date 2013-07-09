@@ -63,6 +63,7 @@
 				<div class="current-inner">
 					<div class="weather-icon">
 						<% wi = @scstring.split("; ").first %>
+						<% puts wi %>
 						<% case 
 						   when wi.match( /(broken|few)/i) %>
 						<img style="height: 128px;" src="weather-icons/mostly-sunny-icon.png">
@@ -74,7 +75,7 @@
 						<img style="height: 128px;" src="weather-icons/snowing-icon.png">
 						<% when wi.match(/cloud/i) %>
 						<img style="height: 128px;" src="weather-icons/cloudy-icon.png">
-						<% when wi.match(/thunder/i) %>
+						<% when wi.match(/(thunder|storm)/i) %>
 						<img style="height: 128px;" src="weather-icons/thunder-storm-icon.png">
 						<% else %>
 						<% puts wi + " did not match anything, it's sunny :D" %>
@@ -113,7 +114,7 @@
 							<img style="height: <%= each_height - 8 %>px;" src="weather-icons/snowing-icon.png">
 							<% when wi.match(/cloud/i) %>
 							<img style="height: <%= each_height - 8 %>px;" src="weather-icons/cloudy-icon.png">
-							<% when wi.match(/thunder/i) %>
+							<% when wi.match(/(thunder|storm)/i) %>
 							<img style="height: <%= each_height - 8 %>px;" src="weather-icons/thunder-storm-icon.png">
 							<% else %>
 							<% puts wi + " did not match anything, it's sunny :D" %>
