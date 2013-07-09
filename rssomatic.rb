@@ -24,7 +24,7 @@ end
 # ...etc
 
 @template = ''
-File.open('/var/public/rss/template.html.erb','r') do |f|
+File.open('template.html.erb','r') do |f|
 	@template = f.read
 end
 File.open './error.log', 'a' do |f|
@@ -32,7 +32,7 @@ File.open './error.log', 'a' do |f|
 	end
 
 template = ERB.new @template
-File.open('/var/www/' + ARGV[1], 'w') do |f|
+File.open( ARGV[1], 'w') do |f|
 	f << template.result(binding)
 end
 rescue
