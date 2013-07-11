@@ -1,4 +1,4 @@
-#!/usr/local/bin/ruby
+#!/home/sam/.rvm/rubies/ruby-2.0.0-p195/bin/ruby
 
 require 'rubygems'
 require 'open-uri'
