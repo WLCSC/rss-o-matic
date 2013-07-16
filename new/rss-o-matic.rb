@@ -66,7 +66,14 @@ rss_feeds.each do |rss_feed|
 		test_string = (item_title + item_description).downcase
 
 		# naughty word filtering
-		if(test_string.include? "porn")
+		# spaces are put there to ensure that they aren't standalone words
+		if((test_string.include? "porn") ||
+		   (test_string.include? "sex") ||
+		   (test_string.include? "fuck") ||
+		   (test_string.include? "shit") ||
+		   (test_string.include? "rape") ||
+		   (test_string.include? "damn")) # add any more naughty words later...
+			log("ITEM_GEN", "Omitting:" + "\n" + item_title + "\n\t" + item_description + "\n\tbecause we found a naughty word.")
 		else
 			@rss_items << {:title => item_title, :description => item_description}
 		end
