@@ -1,0 +1,137 @@
+
+body {
+	background-image: url("img/tweed.png");
+	background-repeat: repeat;
+	background-color: #151615;
+	color: #ffffff;
+
+	line-height: 16px;
+}
+
+.well {
+	color: #202020;
+}
+
+.radar {
+	position: absolute;
+	top: 16px;
+	left: 16px;
+	width: 618px;
+	height: 464px;
+}
+
+.compass-container {
+	position: absolute;
+	top: 496px;
+	left: 16px;
+	width: 201px;
+	height: 256px;
+	background-color: #202020;
+}
+
+.compass-inner {
+	padding: 16px 16px 16px 16px;
+	text-align: center;
+}
+
+.compass-container-table {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 201px;
+	height: 256px;
+	text-align: center;
+}
+
+.logo-and-credits-container {
+	position: absolute;
+	top: 496px;
+	left: 225px;
+	width: 200px;
+	height: 256px;
+	background-color: #202020;
+	text-align: center;
+}
+
+.lac-table {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 201px;
+	height: 256px;
+	text-align: center;
+}
+
+.current-status-container {
+	position: absolute;
+	top: 496px;
+	left: 433px;
+	width: 200px;
+	height: 256px;
+	background-color: #202020;
+}
+
+.current-inner {
+	padding: 16px 16px 16px 16px;
+	text-align: center;
+}
+
+.forecast-item {
+	position: absolute;
+	background-color: #202020;
+}
+
+.compass-back {
+	width: 128px;
+}
+
+/* ROTATEME */
+.compass-needle {
+	position: absolute;
+	top: 16px;
+	left: 37px;
+	width: 128px;
+	transform: rotate(90deg);
+}
+
+.station-code {
+	font-size: 18px;
+	font-family: monospace;
+}
+
+tiny {
+	font-size: 6px;
+	line-height: 8px;
+	font-family: monospace;
+}
+
+.logo-and-credits-inner {
+	padding: 16px 16px 16px 16px;
+}
+
+.compass-text {
+	font-size: 18px;
+	font-family: monospace;
+}
+
+.current-temperature {
+	font-size: 28px;
+	margin-top: -8px;
+	margin-bottom: 12px;
+}
+
+.wind-text {
+	font-size: 16px;
+	font-weight: bold;
+	font-family: monospace;
+	color: #808080;
+	letter-spacing: 24px;
+	padding-top: 16px;
+	padding-left: 24px;
+}
+
+#date-time {
+	font-size: 16px;
+	line-height: 18px;
+	font-family: monospace;
+}
