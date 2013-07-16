@@ -22,7 +22,7 @@
 		</header>
 	</div>
 	<div id="main" class="wrapper">
-		<% @items.each do |item| %>
+		<% @rss_items.each do |item| %>
 			<article>
 				<h2><%= item[:title] %></h2>
 				<% if @details %> <%= item[:description] %> <% end %>
