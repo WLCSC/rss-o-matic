@@ -1,24 +1,22 @@
-RSS-o-Matic
+rss-o-matic
 ===========
 
-A tool for spitting RSS feeds out into web pages suitable for display on common area displays.
+RSS-o-Matic downloads all of the RSS feeds (The URLs are specified in `rss-o-matic.rb` as an array called `rss_feeds`) given and spits out a bunch of HTML files in `public-rss-o-matic`.
 
-You will need Nokogiri installed (gem install nokogiri) for this to work.
+Those HTML files should then be put up for display on the Commons display(s) (or other displays that are 1024px by 768px).
 
-And here's how you run it:
-    
-		ruby rssomatic.rb feed_url output_file show_details? [count] [offset]
+metar-o-matic
+=============
 
-Weather-o-Matic
----------------
+METAR-o-Matic downloads a METAR report for the specified station code (specified in `metar-o-matic.rb` on line 27 as `@station_code`) and a forecast from [OpenWeatherMap](http://openweathermap.org), then spits out an HTML file into `public-metar-o-matic`.
 
-An offshoot of RSS-o-Matic that spits the weather forecast out into web pages suitable for display on common area displays.
+That HTML file should then be put up for display on the Commons display(s) (or other displays that are 1024px by 768px).
 
-Run it like this:
- 
-    ruby weatheromatic zip_code output_file
+License
+=======
 
-Copyright 2013 Brad Thompson Distributed under the terms of the GNU General Public License
+
+Copyright 2013 Kristofer Rye (based on another version [Copyrighted 2013, by Brad Thompson, no longer distributed]), distributed under the terms of the GNU General Public License
 
 RSS-o-Matic is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
