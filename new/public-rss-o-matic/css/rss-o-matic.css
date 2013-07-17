@@ -12,6 +12,11 @@ body {
 .rss-items-container {
 	margin-left: 16px;
 	margin-right: 16px;
+
+	position: relative;
+	top: -32px;
+	
+	z-index: -1;
 }
 
 .rss-item-container {
@@ -21,6 +26,8 @@ body {
 	margin-bottom: 8px;
 
 	width: 992px;
+
+	z-index: -1;
 }
 
 .rss-item-title-container {
@@ -46,18 +53,23 @@ body {
 
 	text-align: center;
 
-	background-color: rgba(255, 0, 0, 0.5);
+	background-color: rgba(127, 0, 0, 1.0);
 	display: table;
 }
 
 .rss-title-text {
-	vertical-align: centered;
+	vertical-align: middle;
 
 	font-size: 48px;
 	font-weight: bold;
 
 	display: table-cell;
 	vertical-align: middle;
+}
+
+.rss-title-credits {
+	font-size: 16px;
+	font-family: monospace;
 }
 
 .main-container {
