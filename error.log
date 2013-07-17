@@ -1,2 +1,0 @@
-undefined method `nil' for #<Metar::Parser:0x007f33e8257ec0>
-metar-o-matic.rb:39:in `<main>'
