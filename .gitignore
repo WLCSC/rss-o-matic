@@ -1,1 +1,5 @@
+# we don't want any more generated files
 *.html
+
+# we don't want any more logs either, because those are generated also
+*.log
