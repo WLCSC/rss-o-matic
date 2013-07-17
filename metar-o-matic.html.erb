@@ -30,6 +30,7 @@
 				<div class="compass-inner">
 					<div class="compass">
 						<img class="compass-back" src="img/compass-back.png" style="">
+						<% if !@wind_text.include? "?" %>
 						<img class="compass-needle" src="img/compass-needle.png" style="/* Safari */
 						
                                                 -webkit-transform: rotate(<%= @wind_text.split('&')[0]; %>deg);
@@ -42,6 +43,8 @@
                                                 
                                                 /* Opera */
                                                 -o-transform: rotate(<%= @wind_text.split('&')[0]; %>deg);">
+						<% else %>
+						<% end %>
 					</div>
 					<hr />
 					<div class="compass-text">

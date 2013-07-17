@@ -68,17 +68,20 @@ end
 
 puts "SC " + @scstring
 
-if (metp.wind.direction.value == 0 && !metp.variable_wind) && metp.wind.speed.to_kilometers_per_hour == 0 && !metp.wind.gusts
-	puts "Winds are reporting calm"
+if (metp.wind.direction != :variable_direction)
+	puts "!variable_direction"
+	if (metp.wind.direction.value == 0 && !metp.variable_wind) && metp.wind.speed.to_kilometers_per_hour == 0 && !metp.wind.gusts
+		puts "Winds are reporting calm"
+	else
+		puts "Winds from " + metp.wind.direction.to_s + " at " + metp.wind.speed.to_kilometers_per_hour.floor.to_s + " km/h (" + metp.wind.speed.to_miles_per_hour.floor.to_s + " mph)" + (metp.wind.gusts ? " gusting to " + metp.wind.gusts.to_kilometers_per_hour.floor.to_s + " km/h (" + metp.wind.gusts.to_miles_per_hour.floor.to_s + " mph)" : "")
+	end
+	@wind_text = metp.wind.direction.to_s(:abbreviated => true).gsub("°","&deg;") + " (from " + metp.wind.direction.to_compass + ")" 
+	@wind_direction = metp.wind.direction.to_s(:abbreviated => true).gsub("°","deg")
 else
-	puts "Winds from " + metp.wind.direction.to_s + " at " + metp.wind.speed.to_kilometers_per_hour.floor.to_s + " km/h (" + metp.wind.speed.to_miles_per_hour.floor.to_s + " mph)" + (metp.wind.gusts ? " gusting to " + metp.wind.gusts.to_kilometers_per_hour.floor.to_s + " km/h (" + metp.wind.gusts.to_miles_per_hour.floor.to_s + " mph)" : "")
+	puts "variable_direction"
+	@wind_text = "?&deg; (from ?)"
+	@wind_direction = "?"
 end
-
-puts "Wind direction: " + metp.wind.direction.to_s(:abbreviated => true)
-
-puts metp.wind.direction.to_s(:abbreviated => true)
-@wind_text = metp.wind.direction.to_s(:abbreviated => true).gsub("°","&deg;") + " (from " + metp.wind.direction.to_compass + ")" 
-@wind_direction = metp.wind.direction.to_s(:abbreviated => true).gsub("°","deg")
 
 puts "Altimeter " + metp.sea_level_pressure.to_inches_of_mercury.to_s
 
