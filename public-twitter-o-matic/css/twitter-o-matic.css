@@ -9,7 +9,7 @@ body {
 	line-height: 16px;
 }
 
-.rss-items-container {
+.tweets-container {
 	margin-left: 16px;
 	margin-right: 16px;
 
@@ -18,7 +18,7 @@ body {
 	z-index: -1;
 }
 
-.rss-item-container {
+.tweet-container {
 	background-color: #202020;
 
 	margin-top: 8px;
@@ -29,24 +29,23 @@ body {
 	z-index: -1;
 }
 
-.rss-item-title-container {
-	padding-top: 4px;
-	padding-bottom: 4px;
+.tweet-text-container {
+	padding: 8px 8px 8px 8px;
 	font-size: 32px;
 	line-height: 36px;
-	text-align: center;
+	/*text-align: center;*/
 }
 
-.rss-item-description-container {
+.tweet-info-container {
 	font-size: 24px;
 	line-height: 28px;
 	
 	padding: 8px 8px 8px 8px;
 
-	text-align: justify;
+	text-align: right;
 }
 
-.rss-title-container {
+.twitter-title-container {
 	width: 1024px;
 	height: 64px;
 
@@ -56,7 +55,7 @@ body {
 	display: table;
 }
 
-.rss-title-text {
+.twitter-title-text {
 	vertical-align: middle;
 
 	font-size: 48px;

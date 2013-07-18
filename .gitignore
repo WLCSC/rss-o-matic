@@ -3,3 +3,6 @@
 
 # we don't want any more logs either, because those are generated also
 *.log
+
+# nor do we want you seeing the Twitter OAuth stuff
+secret_stuff.rb
