@@ -43,7 +43,7 @@ end
 begin
 	@template = ""
 	log("WRITE", "Reading the template")
-	File.open('./twitter-o-matic.html.erb', 'r') do |f|
+	File.open('./views/twitter-o-matic.html.erb', 'r') do |f|
 		@template = f.read
 	end
 	

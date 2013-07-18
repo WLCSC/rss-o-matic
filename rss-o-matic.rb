@@ -85,7 +85,7 @@ rss_feeds.each do |rss_feed|
 		begin
 			@template = ""
 			log("WRITE", "Reading the template")
-			File.open('./rss-o-matic.html.erb', 'r') do |f|
+			File.open('./views/rss-o-matic.html.erb', 'r') do |f|
 				@template = f.read
 			end
 			

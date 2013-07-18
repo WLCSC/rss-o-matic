@@ -112,7 +112,7 @@ begin
 
 	@template = ''
 	puts "Reading template"
-	File.open('./metar-o-matic.html.erb', 'r') do |f|
+	File.open('./views/metar-o-matic.html.erb', 'r') do |f|
 		@template = f.read
 	end
 
